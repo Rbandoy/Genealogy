@@ -1,0 +1,26 @@
+let data = [
+    {name: "1",data:{id: "1", street: "bacuag"},placement: "12"},
+    {name: "2",data:{id: "2", street: "claver"},placement: "1"},
+    {name: "3",data:{id: "3", street: "placer"},placement: "1"},
+    {name: "4",data:{id: "4", street: "campo"},placement: "3"}, 
+]
+var storage = []
+
+function dataMap(currentObject, placement, data) {
+
+   if (storage.length == 0) { // check if storage has data if none then store the parent node
+       storage = {...data, child: []} 
+   } else {
+       
+       if (currentObject.name === placement) {   //check if current object name and placement is equal if equal then add the child
+               return currentObject.child.push({...data, child: []})
+       } else { //check if current object child has data if has data then perform recursive in child 
+           currentObject.child.map(d => dataMap(d, placement, data))
+       }
+   }
+}
+
+data.map(datum => dataMap(storage, datum.placement, datum)) //pass storage, data placement, data
+  
+
+console.log(JSON.stringify(storage))
