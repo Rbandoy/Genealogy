@@ -1,2 +1,2 @@
 # Genealogy
-Genealogy Nodejs - RENE BOY ANDOY
+Genealogy Nodejs - RBANDOY
